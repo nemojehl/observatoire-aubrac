@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patrimoine Culturel — Observatoire PNR Aubrac</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="https://js.arcgis.com/5.0/embeddable-components/"></script>
+  <style>
+    .hero { background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Aubrac_village.jpg/1280px-Aubrac_village.jpg'); }
+    .patrimoine-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .patrimoine-item {
+      background: var(--blanc);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: var(--ombre);
+      border-left: 4px solid var(--vert);
+    }
+    .patrimoine-item h4 {
+      font-family: 'Playfair Display', serif;
+      color: var(--vert);
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+    .patrimoine-item p { font-size: 0.9rem; color: #555; }
+    .stats-patrimoine {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .stat-pat {
+      background: var(--fond2);
+      border-radius: 8px;
+      padding: 1.2rem;
+      text-align: center;
+      border-top: 3px solid var(--or-fonce);
+    }
+    .stat-pat .num { font-size: 2rem; font-weight: 800; color: var(--vert); font-family: 'Playfair Display', serif; }
+    .stat-pat .lbl { font-size: 0.8rem; color: #666; margin-top: 0.3rem; }
+    @media (max-width: 768px) {
+      .patrimoine-grid { grid-template-columns: 1fr; }
+      .stats-patrimoine { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span>Observatoire du Territoire<br>PNR de l'Aubrac</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="geographie.html">Géographie</a>
+      <a href="patrimoine.html" class="active">Patrimoine culturel</a>
+      <a href="biodiversite.html">Biodiversité</a>
+      <a href="amenagement.html">Aménagement</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Patrimoine culturel & Paysages</div>
+    <h1>Un territoire<br>de mémoire vivante</h1>
+    <p>Monuments historiques, chemin de Compostelle, burons et traditions agropastorales — le patrimoine exceptionnel de l'Aubrac.</p>
+  </div>
+</div>
+
+<!-- STATISTIQUES -->
+<section>
+  <div class="container">
+    <p class="section-subtitle">Chiffres clés</p>
+    <h2 class="section-title">Le patrimoine en chiffres</h2>
+    <div class="divider"></div>
+    <div class="stats-patrimoine">
+      <div class="stat-pat">
+        <div class="num">5</div>
+        <div class="lbl">Biens inscrits au Patrimoine mondial UNESCO</div>
+      </div>
+      <div class="stat-pat">
+        <div class="num">~50 km</div>
+        <div class="lbl">Du Chemin de Compostelle (GR65) traversant le PNR</div>
+      </div>
+      <div class="stat-pat">
+        <div class="num">2023</div>
+        <div class="lbl">Inscription de la Transhumance au patrimoine immatériel UNESCO</div>
+      </div>
+      <div class="stat-pat">
+        <div class="num">XII<sup>e</sup>s.</div>
+        <div class="lbl">Fondation de la Dômerie d'Aubrac</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CARTE INTERACTIVE -->
+<section class="bg-fond">
+  <div class="container">
+    <p class="section-subtitle">Carte interactive</p>
+    <h2 class="section-title">Monuments historiques et Chemin de Compostelle</h2>
+    <div class="divider"></div>
+    <p style="margin-bottom: 1rem; color: #555;">Cette carte localise les monuments historiques classés et inscrits du PNR, ainsi que le tracé du Chemin de Saint-Jacques-de-Compostelle (Via Podiensis — GR65) qui traverse le territoire d'est en ouest.</p>
+    <div class="map-container">
+      <arcgis-embedded-map style="height:560px;width:100%;" item-id="860fc6e2230747a5a7f29e6e9db7daa2" theme="dark" heading-enabled legend-enabled time-zone-label-enabled center="3.0348622629608206,44.698612436310555" scale="577790.554289" portal-url="https://unistra.maps.arcgis.com"></arcgis-embedded-map>
+      <div class="map-caption">Monuments historiques (base Mérimée/Wikipedia) et tracé GR65 (OpenStreetMap) — Sources : Ministère de la Culture, OSM</div>
+    </div>
+  </div>
+</section>
+
+<!-- TEXTE DESCRIPTIF -->
+<section>
+  <div class="container">
+    <p class="section-subtitle">Description</p>
+    <h2 class="section-title">Un patrimoine architectural et culturel exceptionnel</h2>
+    <div class="divider"></div>
+    <div class="two-col">
+      <div class="text-block">
+        <p>L'Aubrac est avant tout un territoire d'identité forte, façonné par des siècles de pratiques agropastorales. Son patrimoine culturel et paysager est d'une richesse exceptionnelle, reconnu au niveau national et international.</p>
+        <h3>Le patrimoine agropastoral</h3>
+        <p>Les <strong>burons</strong> — fromageries d'estive en pierre —, les <strong>drailles</strong> — chemins de transhumance —, et les granges-étables en granite et basalte, coiffées de lauzes, constituent un patrimoine vernaculaire unique en Europe. La <strong>transhumance</strong>, inscrite au Patrimoine culturel immatériel de l'UNESCO en décembre 2023, rythme encore aujourd'hui la vie du plateau.</p>
+        <h3>Le chemin de Compostelle</h3>
+        <p>La <strong>Via Podiensis (GR65)</strong>, partant du Puy-en-Velay, traverse l'Aubrac sur environ 50 km. Inscrit au Patrimoine mondial de l'humanité par l'UNESCO, ce chemin de pèlerinage est fréquenté chaque année par des milliers de marcheurs du monde entier.</p>
+      </div>
+      <div class="text-block">
+        <h3>La Dômerie d'Aubrac</h3>
+        <p>Fondée au XIIème siècle, la Dômerie d'Aubrac était un hospice monastique qui accueillait les pèlerins de Compostelle traversant le plateau hostile. Ses bâtiments en pierre volcanique, dont l'église et la tour des Anglais, constituent un témoignage exceptionnel de l'architecture médiévale de montagne.</p>
+        <h3>Les savoir-faire locaux</h3>
+        <p>Le territoire se distingue par ses savoir-faire remarquables : le <strong>fromage AOP Laguiole</strong>, fabriqué en burons depuis le Moyen-Âge, l'<strong>aligot</strong> emblématique, la <strong>race bovine Aubrac</strong> et le célèbre <strong>couteau de Laguiole</strong>, dont l'artisanat coutelier perpétue une tradition séculaire.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ELEMENTS PATRIMONIAUX -->
+<section class="bg-fond2">
+  <div class="container">
+    <p class="section-subtitle">Inventaire</p>
+    <h2 class="section-title">Les éléments patrimoniaux remarquables</h2>
+    <div class="divider"></div>
+    <div class="patrimoine-grid">
+      <div class="patrimoine-item">
+        <h4>🏛️ Dômerie d'Aubrac</h4>
+        <p>Abbaye médiévale du XIIème siècle, ancienne étape sur le Chemin de Compostelle. Tour des Anglais et église classées Monuments historiques.</p>
+      </div>
+      <div class="patrimoine-item">
+        <h4>⛪ Abbatiale de Saint-Chély-d'Aubrac</h4>
+        <p>Église romane remarquable, étape incontournable du GR65, avec son porche gothique et ses chapelles latérales.</p>
+      </div>
+      <div class="patrimoine-item">
+        <h4>🏰 Village médiéval d'Estaing</h4>
+        <p>Classé parmi les Plus Beaux Villages de France, dominé par son château du XVème siècle et son pont gothique sur le Lot.</p>
+      </div>
+      <div class="patrimoine-item">
+        <h4>🐄 Transhumance UNESCO</h4>
+        <p>Inscrite au Patrimoine culturel immatériel de l'humanité en décembre 2023, la transhumance aubracoise rassemble chaque mai des milliers de visiteurs.</p>
+      </div>
+      <div class="patrimoine-item">
+        <h4>🧀 Fromage AOP Laguiole</h4>
+        <p>Fromage à pâte pressée non cuite, fabriqué en burons sur le plateau depuis le Moyen-Âge. AOP depuis 1961.</p>
+      </div>
+      <div class="patrimoine-item">
+        <h4>🔪 Couteau de Laguiole</h4>
+        <p>Symbole mondial du savoir-faire coutelier français, forgé à la main depuis le XIXème siècle dans les ateliers de Laguiole.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h4>Observatoire du Territoire — PNR de l'Aubrac</h4>
+      <p>Espace web cartographique complémentaire du site officiel du PNR de l'Aubrac. Réalisé dans le cadre d'un projet universitaire Master 2 OTG.</p>
+    </div>
+    <div class="footer-links">
+      <h5>Pages</h5>
+      <a href="index.html">Accueil</a>
+      <a href="geographie.html">Géographie</a>
+      <a href="patrimoine.html">Patrimoine culturel</a>
+      <a href="biodiversite.html">Biodiversité</a>
+      <a href="amenagement.html">Aménagement</a>
+    </div>
+    <div class="footer-links">
+      <h5>Sources</h5>
+      <a href="https://www.parc-naturel-aubrac.fr" target="_blank">PNR Aubrac officiel</a>
+      <a href="https://www.pop.culture.gouv.fr" target="_blank">Base Mérimée (Culture)</a>
+      <a href="https://www.openstreetmap.org" target="_blank">OpenStreetMap</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>Sources cartographiques : IGN, Ministère de la Culture (base Mérimée/Wikipedia), OpenStreetMap · Réalisé avec ArcGIS — ESRI</p>
+  </div>
+</footer>
+
+<script src="nav.js"></script>
+</body>
+</html>
