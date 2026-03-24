@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aménagement — Observatoire PNR Aubrac</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="https://js.arcgis.com/5.0/embeddable-components/"></script>
+  <style>
+    .hero { background-image: url('pictures/amenagement.webp'); }
+    .amenagement-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .amen-card {
+      background: var(--blanc);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: var(--ombre);
+      border-top: 3px solid var(--or-fonce);
+    }
+    .amen-card h4 {
+      font-family: 'Playfair Display', serif;
+      color: var(--anthracite);
+      margin-bottom: 0.5rem;
+    }
+    .amen-card p { font-size: 0.9rem; color: #555; }
+    .amen-card .amen-val {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--vert);
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 0.3rem;
+    }
+    .epci-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .epci-item {
+      background: var(--fond2);
+      border-radius: 6px;
+      padding: 1rem 1.2rem;
+      border-left: 4px solid var(--vert);
+    }
+    .epci-item h5 { font-size: 0.95rem; color: var(--vert); margin-bottom: 0.3rem; }
+    .epci-item p { font-size: 0.85rem; color: #666; }
+    @media (max-width: 768px) {
+      .amenagement-grid { grid-template-columns: 1fr; }
+      .epci-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="logo-pnr-aubrac.png" alt="Logo PNR Aubrac" style="height:44px; width:auto;">
+      <span>Observatoire du Territoire<br>PNR de l'Aubrac</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="geographie.html">Géographie</a>
+      <a href="patrimoine.html">Patrimoine culturel</a>
+      <a href="biodiversite.html">Biodiversité</a>
+      <a href="amenagement.html" class="active">Aménagement</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Aménagement du territoire</div>
+    <h1>Un territoire rural<br>en mouvement</h1>
+    <p>Densité de population, communautés de communes, activités économiques — les dynamiques territoriales du PNR de l'Aubrac.</p>
+    <div class="hero-credit">© www.tourisme-en-aubrac.com — Droits réservés</div>
+  </div>
+</div>
+
+<!-- INDICATEURS -->
+<section>
+  <div class="container">
+    <p class="section-subtitle">Indicateurs clés</p>
+    <h2 class="section-title">L'aménagement en chiffres</h2>
+    <div class="divider"></div>
+    <div class="amenagement-grid">
+      <div class="amen-card">
+        <div class="amen-val">~20 hab/km²</div>
+        <h4>Densité de population</h4>
+        <p>L'Aubrac est l'un des territoires les moins densément peuplés de France, avec une densité très inférieure à la moyenne nationale (116 hab/km²).</p>
+      </div>
+      <div class="amen-card">
+        <div class="amen-val">6</div>
+        <h4>Communautés de communes</h4>
+        <p>Six communautés de communes adhérentes au PNR, couvrant l'ensemble du territoire classé à cheval sur trois départements.</p>
+      </div>
+      <div class="amen-card">
+        <div class="amen-val">2</div>
+        <h4>Régions administratives</h4>
+        <p>Le PNR est à cheval sur Occitanie (Aveyron, Lozère) et Auvergne-Rhône-Alpes (Cantal), ce qui constitue un défi de gouvernance interrégionale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CARTE DENSITE -->
+<section class="bg-fond">
+  <div class="container">
+    <p class="section-subtitle">Carte interactive</p>
+    <h2 class="section-title">Densité de population par commune</h2>
+    <div class="divider"></div>
+    <p style="margin-bottom: 1rem; color: #555;">Cette carte choroplèthe représente la densité de population (hab/km²) par commune au sein du PNR de l'Aubrac, d'après les données INSEE 2022. Les communes les plus foncées sont les plus densément peuplées. Cliquez sur une commune pour afficher ses données détaillées.</p>
+    <div class="map-container">
+      <arcgis-embedded-map style="height:700px;width:100%;" item-id="248b8f6dfb3a4e38876e20fac63f4cb3" theme="dark" heading-enabled legend-enabled time-zone-label-enabled center="3.035973377014897,44.65749058646866" scale="577790.554289" portal-url="https://unistra.maps.arcgis.com"></arcgis-embedded-map>
+      <div class="map-caption">Densité de population par commune (INSEE 2022) — Méthode : classification de Jenks (Natural Breaks)</div>
+    </div>
+  </div>
+</section>
+
+<!-- TEXTE -->
+<section>
+  <div class="container">
+    <div class="two-col">
+      <div class="text-block">
+        <p class="section-subtitle">Analyse</p>
+        <h2 class="section-title">Les enjeux de l'aménagement aubracois</h2>
+        <div class="divider"></div>
+        <p>L'aménagement du territoire du PNR de l'Aubrac est marqué par des enjeux spécifiques aux espaces ruraux de montagne : déprise agricole, vieillissement de la population, maintien des services, développement touristique durable et adaptation au changement climatique.</p>
+        <h3>Un territoire peu dense</h3>
+        <p>Avec une densité moyenne d'environ <strong>20 hab/km²</strong>, l'Aubrac est l'un des territoires les plus faiblement peuplés de France. Cette faible densité pose des défis majeurs en termes d'accès aux services (santé, éducation, transports) et de maintien des équipements publics.</p>
+        <h3>Une économie rurale diversifiée</h3>
+        <p>L'économie du territoire repose sur plusieurs piliers : l'élevage bovin (race Aubrac, fromage AOP Laguiole), le tourisme de nature, l'artisanat (coutellerie de Laguiole), le thermalisme (Chaudes-Aigues) et une filière bois en développement.</p>
+      </div>
+      <div class="text-block">
+        <h3>La gouvernance interterritoriale</h3>
+        <p>La position du PNR à cheval sur deux régions (Occitanie et Auvergne-Rhône-Alpes) et trois départements (Aveyron, Lozère, Cantal) constitue à la fois un défi de gouvernance et une richesse, favorisant les coopérations interrégionales.</p>
+        <h3>Les 6 communautés de communes</h3>
+        <div class="epci-grid">
+          <div class="epci-item">
+            <h5>Aubrac, Carladez et Viadène</h5>
+            <p>Aveyron — Laguiole, Mur-de-Barrez</p>
+          </div>
+          <div class="epci-item">
+            <h5>Aubrac Lot Causses Tarn</h5>
+            <p>Aveyron — Saint-Geniez-d'Olt</p>
+          </div>
+          <div class="epci-item">
+            <h5>Hautes Terres de l'Aubrac</h5>
+            <p>Lozère — Nasbinals, Saint-Urcize</p>
+          </div>
+          <div class="epci-item">
+            <h5>Pays de Saint-Flour — Margeride</h5>
+            <p>Cantal — Chaudes-Aigues</p>
+          </div>
+          <div class="epci-item">
+            <h5>Caldaguès-Aubrac</h5>
+            <p>Lozère — Aumont-Aubrac</p>
+          </div>
+          <div class="epci-item">
+            <h5>Pays de Marvejols-Gévaudan</h5>
+            <p>Lozère — Marvejols</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHARTE PNR -->
+<div class="info-band">
+  <div class="container">
+    <div class="info-band-icon">📋</div>
+    <div>
+      <h3>La Charte du PNR de l'Aubrac</h3>
+      <p>Document stratégique pour 15 ans, la Charte fixe les grandes orientations du PNR : maintenir la population, améliorer le cadre de vie, préserver et valoriser les patrimoines et ressources locales. Elle engage l'ensemble des communes et communautés de communes membres.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h4>Observatoire du Territoire — PNR de l'Aubrac</h4>
+      <p>Espace web cartographique complémentaire du site officiel du PNR de l'Aubrac. Réalisé dans le cadre du Master 1 OTG — Université de Strasbourg.</p>
+    </div>
+    <div class="footer-links">
+      <h5>Pages</h5>
+      <a href="index.html">Accueil</a>
+      <a href="geographie.html">Géographie</a>
+      <a href="patrimoine.html">Patrimoine culturel</a>
+      <a href="biodiversite.html">Biodiversité</a>
+      <a href="amenagement.html">Aménagement</a>
+    </div>
+    <div class="footer-links">
+      <h5>Sources</h5>
+      <a href="https://www.parc-naturel-aubrac.fr" target="_blank">PNR Aubrac officiel</a>
+      <a href="https://www.insee.fr" target="_blank">INSEE</a>
+      <a href="https://www.observatoire-des-territoires.gouv.fr" target="_blank">Observatoire national</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <img src="Universite_de_Strasbourg.png" alt="Université de Strasbourg" class="footer-unistra-logo">
+      <div class="footer-bottom-text">
+        <p>Sources cartographiques : IGN, INSEE, EEA, OpenStreetMap · Photos : © N. JEHL / © C.LEONHART / © tourisme-en-aubrac.com — Droits réservés · Réalisé avec ArcGIS — ESRI</p>
+        <p class="footer-copyright">© 2025 Observatoire du territoire PNR de l'Aubrac — Master 1 OTG, Université de Strasbourg. Toute reproduction, même partielle, du contenu de ce site est interdite sans autorisation préalable.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="nav.js"></script>
+</body>
+</html>
