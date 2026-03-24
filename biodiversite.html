@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biodiversité — Observatoire PNR Aubrac</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="https://js.arcgis.com/5.0/embeddable-components/"></script>
+  <style>
+    .hero { background-image: url('pictures/biodiversite.jpg'); }
+    .especes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .espece-card {
+      background: var(--blanc);
+      border-radius: 8px;
+      padding: 1.2rem;
+      box-shadow: var(--ombre);
+      border-top: 3px solid var(--vert-clair);
+    }
+    .espece-card .espece-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .espece-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--vert); margin-bottom: 0.3rem; }
+    .espece-card .espece-type { font-size: 0.75rem; color: #888; margin-bottom: 0.3rem; font-style: italic; }
+    .espece-card p { font-size: 0.85rem; color: #555; }
+    .natura-legend {
+      display: flex;
+      gap: 2rem;
+      margin: 1rem 0 2rem;
+      flex-wrap: wrap;
+    }
+    .legend-item {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.9rem; font-weight: 600;
+    }
+    .legend-dot {
+      width: 20px; height: 20px; border-radius: 3px;
+    }
+    .stats-bio {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .stat-bio {
+      background: var(--vert);
+      color: var(--blanc);
+      border-radius: 8px;
+      padding: 1.5rem 1rem;
+      text-align: center;
+    }
+    .stat-bio .num { font-size: 2.2rem; font-weight: 800; color: var(--or); font-family: 'Playfair Display', serif; }
+    .stat-bio .lbl { font-size: 0.8rem; margin-top: 0.3rem; opacity: 0.9; }
+    @media (max-width: 768px) { .stats-bio { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="pictures/logo-pnr-aubrac.png" alt="Logo PNR Aubrac" style="height:44px; width:auto;">
+      <span>Observatoire du Territoire<br>PNR de l'Aubrac</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="geographie.html">Géographie</a>
+      <a href="patrimoine.html">Patrimoine culturel</a>
+      <a href="biodiversite.html" class="active">Biodiversité</a>
+      <a href="amenagement.html">Aménagement</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Patrimoine naturel & Biodiversité</div>
+    <h1>Un hotspot<br>de biodiversité</h1>
+    <p>Tourbières, pelouses d'altitude, espèces protégées — l'Aubrac abrite une biodiversité remarquable reconnue au niveau européen.</p>
+    <div class="hero-credit">© C.LEONHART — Droits réservés</div>
+  </div>
+</div>
+
+<!-- STATS -->
+<section>
+  <div class="container">
+    <p class="section-subtitle">Chiffres clés</p>
+    <h2 class="section-title">La biodiversité en chiffres</h2>
+    <div class="divider"></div>
+    <div class="stats-bio">
+      <div class="stat-bio">
+        <div class="num">6</div>
+        <div class="lbl">Sites Natura 2000</div>
+      </div>
+      <div class="stat-bio">
+        <div class="num">26 %</div>
+        <div class="lbl">Du territoire en espaces protégés</div>
+      </div>
+      <div class="stat-bio">
+        <div class="num">53</div>
+        <div class="lbl">Types d'habitats naturels recensés</div>
+      </div>
+      <div class="stat-bio">
+        <div class="num">30 %</div>
+        <div class="lbl">Du territoire couvert par la forêt</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CARTE NATURA 2000 -->
+<section class="bg-fond">
+  <div class="container">
+    <p class="section-subtitle">Carte interactive</p>
+    <h2 class="section-title">Les sites Natura 2000 du PNR de l'Aubrac</h2>
+    <div class="divider"></div>
+    <div class="natura-legend">
+      <div class="legend-item">
+        <div class="legend-dot" style="background: rgba(123,45,139,0.5); border: 2px solid #7b2d8b;"></div>
+        <span>ZSC — Zone Spéciale de Conservation (Directive Habitats)</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background: rgba(26,111,168,0.5); border: 2px solid #1a6fa8;"></div>
+        <span>ZPS — Zone de Protection Spéciale (Directive Oiseaux)</span>
+      </div>
+    </div>
+    <p style="margin-bottom: 1rem; color: #555;">Six sites Natura 2000 couvrent le territoire du PNR, témoignant de sa valeur écologique au niveau européen. Cliquez sur un site pour afficher son nom et son type.</p>
+    <div class="map-container">
+      <arcgis-embedded-map style="height:700px;width:100%;" item-id="41aad4903b394f79b381d3f52e7e44c4" theme="dark" heading-enabled time-zone-label-enabled center="2.9423544639857244,44.747187203948926" scale="577790.554289" portal-url="https://unistra.maps.arcgis.com"></arcgis-embedded-map>
+      <div class="map-caption">Sites Natura 2000 — Source : European Environment Agency (EEA), données décembre 2024</div>
+    </div>
+  </div>
+</section>
+
+<!-- TEXTE -->
+<section>
+  <div class="container">
+    <div class="two-col">
+      <div class="text-block">
+        <p class="section-subtitle">Description</p>
+        <h2 class="section-title">Un patrimoine naturel remarquable</h2>
+        <div class="divider"></div>
+        <p>Plateau volcanique d'origine tertiaire, l'Aubrac est un haut lieu de la biodiversité française. Ses milieux naturels variés — prairies naturelles d'altitude, tourbières hautes actives, hêtraies-sapinières, gorges profondes, zones humides — abritent une faune et une flore d'une grande richesse.</p>
+        <h3>Les milieux naturels</h3>
+        <p>Les <strong>tourbières hautes actives</strong> et les <strong>pelouses à nard</strong> constituent les milieux les plus sensibles du PNR. Ces écosystèmes fragiles, menacés par les changements climatiques, font l'objet de programmes agro-environnementaux spécifiques.</p>
+        <h3>Les sites Natura 2000</h3>
+        <p>Six sites Natura 2000 sont présents sur le territoire :</p>
+        <ul>
+          <li>Plateau central de l'Aubrac aveyronnais</li>
+          <li>Plateau de l'Aubrac (Lozère)</li>
+          <li>Aubrac (Cantal)</li>
+          <li>Gorges de la Truyère (ZPS Oiseaux)</li>
+          <li>Haute vallée du Lot et gorges</li>
+          <li>Vallon de l'Urugne</li>
+        </ul>
+      </div>
+      <div class="text-block">
+        <h3>Les zones humides</h3>
+        <p>L'Aubrac est un château d'eau naturel. Ses nombreuses zones humides — tourbières, prairies humides, zones de sources — jouent un rôle essentiel dans la régulation du cycle de l'eau et constituent des refuges pour de nombreuses espèces.</p>
+        <h3>La forêt aubracoise</h3>
+        <p>La forêt couvre environ <strong>30% du territoire</strong>. Les hêtraies-sapinières et les chênaies abritent de grands mammifères comme le cerf élaphe, ainsi que de nombreuses espèces d'oiseaux forestiers. Le PNR accompagne les propriétaires forestiers dans une gestion durable qui concilie production économique et préservation de la biodiversité.</p>
+        <h3>Programme agro-environnemental</h3>
+        <p>Le PNR anime un programme agro-environnemental (PAEC) qui soutient les éleveurs dans le maintien de pratiques agricoles favorables à la biodiversité, notamment la préservation des prairies naturelles et des zones humides.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESPECES REMARQUABLES -->
+<section class="bg-fond2">
+  <div class="container">
+    <p class="section-subtitle">Faune & Flore</p>
+    <h2 class="section-title">Espèces remarquables de l'Aubrac</h2>
+    <div class="divider"></div>
+    <div class="especes-grid">
+      <div class="espece-card">
+        <div class="espece-icon">🌼</div>
+        <h4>Arnica des montagnes</h4>
+        <div class="espece-type">Flore — Prairies d'altitude</div>
+        <p>Espèce protégée, caractéristique des prairies acides de montagne. Indicateur de la qualité des prairies naturelles.</p>
+      </div>
+      <div class="espece-card">
+        <div class="espece-icon">🌿</div>
+        <h4>Ligulaire de Sibérie</h4>
+        <div class="espece-type">Flore — Relique glaciaire</div>
+        <p>Plante rare en Europe, en régression à l'échelle continentale mais bien présente sur l'Aubrac lozérien.</p>
+      </div>
+      <div class="espece-card">
+        <div class="espece-icon">🦅</div>
+        <h4>Aigle botté</h4>
+        <div class="espece-type">Faune — Oiseaux</div>
+        <p>Rapace nicheur sur le plateau de l'Aubrac. Sa présence témoigne de la qualité des milieux naturels.</p>
+      </div>
+      <div class="espece-card">
+        <div class="espece-icon">🦅</div>
+        <h4>Milan royal</h4>
+        <div class="espece-type">Faune — Oiseaux migrateurs</div>
+        <p>Les gorges de la Truyère constituent un site migratoire important pour cette espèce emblématique.</p>
+      </div>
+      <div class="espece-card">
+        <div class="espece-icon">🦦</div>
+        <h4>Loutre d'Europe</h4>
+        <div class="espece-type">Faune — Mammifères aquatiques</div>
+        <p>Présente sur le Lot et la Truyère. Sa présence indique la bonne qualité des cours d'eau.</p>
+      </div>
+      <div class="espece-card">
+        <div class="espece-icon">🦇</div>
+        <h4>Murin de Bechstein</h4>
+        <div class="espece-type">Faune — Chiroptères</div>
+        <p>Chauve-souris protégée qui vit dans les cavités des vieux hêtres, très présents sur le plateau.</p>
+      </div>
+      <div class="espece-card">
+        <div class="espece-icon">🐟</div>
+        <h4>Truite fario</h4>
+        <div class="espece-type">Faune — Poissons</div>
+        <p>Les rivières froides et oxygénées de l'Aubrac offrent des conditions idéales à cette espèce emblématique.</p>
+      </div>
+      <div class="espece-card">
+        <div class="espece-icon">🦌</div>
+        <h4>Cerf élaphe</h4>
+        <div class="espece-type">Faune — Grands mammifères</div>
+        <p>Présent dans les forêts du plateau. Le brame du cerf en automne est un spectacle caractéristique de l'Aubrac.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h4>Observatoire du Territoire — PNR de l'Aubrac</h4>
+      <p>Espace web cartographique complémentaire du site officiel du PNR de l'Aubrac. Réalisé dans le cadre d'un projet universitaire Master 2 OTG.</p>
+    </div>
+    <div class="footer-links">
+      <h5>Pages</h5>
+      <a href="index.html">Accueil</a>
+      <a href="geographie.html">Géographie</a>
+      <a href="patrimoine.html">Patrimoine culturel</a>
+      <a href="biodiversite.html">Biodiversité</a>
+      <a href="amenagement.html">Aménagement</a>
+    </div>
+    <div class="footer-links">
+      <h5>Sources</h5>
+      <a href="https://www.parc-naturel-aubrac.fr" target="_blank">PNR Aubrac officiel</a>
+      <a href="https://www.eea.europa.eu" target="_blank">EEA (Natura 2000)</a>
+      <a href="https://inpn.mnhn.fr" target="_blank">INPN</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>Sources cartographiques : EEA (données Natura 2000, décembre 2024), IGN · Réalisé avec ArcGIS — ESRI</p>
+  </div>
+</footer>
+
+<script src="nav.js"></script>
+</body>
+</html>
